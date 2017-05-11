@@ -1,6 +1,10 @@
 <?php 
 // Register Custom Post Type
+<<<<<<< HEAD
 function ntp_custom_post() {
+=======
+function custom_post_type() {
+>>>>>>> e76fc0643e774b46ec28298ea94f6d7e114fbb53
 
 	$labels = array(
 		'name'                  => _x( 'sliders', 'Post Type General Name', 'text_domain' ),
@@ -53,11 +57,16 @@ function ntp_custom_post() {
 	register_post_type( 'team_slider', $args );
 
 }
+<<<<<<< HEAD
 add_action( 'init', 'ntp_custom_post', 0 );
+=======
+add_action( 'init', 'custom_post_type', 0 );
+>>>>>>> e76fc0643e774b46ec28298ea94f6d7e114fbb53
 
 
 
 
+<<<<<<< HEAD
 add_action( 'cmb2_admin_init', 'ntp_cmb2_metabox' );
 /**
  * Define the metabox and field configurations.
@@ -66,12 +75,26 @@ function ntp_cmb2_metabox() {
 
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_ntp_';
+=======
+add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
+/**
+ * Define the metabox and field configurations.
+ */
+function cmb2_sample_metaboxes() {
+
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = '_yourprefix_';
+>>>>>>> e76fc0643e774b46ec28298ea94f6d7e114fbb53
 
 	/**
 	 * Initiate the metabox
 	 */
 	$cmb = new_cmb2_box( array(
+<<<<<<< HEAD
 		'id'            => 'ntp_metabox',
+=======
+		'id'            => 'test_metabox',
+>>>>>>> e76fc0643e774b46ec28298ea94f6d7e114fbb53
 		'title'         => __( 'Team Slider', 'cmb2' ),
 		'object_types'  => array( 'team_slider', ), // Post type
 		'context'       => 'normal',
@@ -81,7 +104,11 @@ function ntp_cmb2_metabox() {
 
 	// Add other metaboxes as needed
 	$group_field_id = $cmb->add_field( array(
+<<<<<<< HEAD
 	'id'          => 'ntp_team_group',
+=======
+	'id'          => 'wiki_test_repeat_group',
+>>>>>>> e76fc0643e774b46ec28298ea94f6d7e114fbb53
 	'type'        => 'group',
 	'repeatable'  => true, // use false if you want non-repeatable group
 	'options'     => array(
@@ -115,6 +142,14 @@ function ntp_cmb2_metabox() {
         'id'   => 'member_description',
         'type' => 'textarea',
     ) );
+<<<<<<< HEAD
+=======
+    $cmb->add_group_field( $group_field_id, array(
+        'name' => 'Facebook Url',
+        'id'   => 'fb_url',
+        'type' => 'text_url',
+    ) );
+>>>>>>> e76fc0643e774b46ec28298ea94f6d7e114fbb53
 
 
 }
