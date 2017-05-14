@@ -1,17 +1,17 @@
 <?php 
 // Register Custom Post Type
-function ntp_custom_post() {
+function fp_team_slider_post_type() {
 
 	$labels = array(
 		'name'                  => _x( 'sliders', 'Post Type General Name', 'text_domain' ),
 		'singular_name'         => _x( 'Team Slider', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Ninga Team Slider', 'text_domain' ),
+		'menu_name'             => __( 'FP Team Slider', 'text_domain' ),
 		'name_admin_bar'        => __( 'Post Type', 'text_domain' ),
 		'archives'              => __( 'Item Archives', 'text_domain' ),
 		'attributes'            => __( 'Item Attributes', 'text_domain' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'All Items', 'text_domain' ),
-		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
+		'all_items'             => __( 'Teams', 'text_domain' ),
+		'add_new_item'          => __( 'Add New Team', 'text_domain' ),
 		'add_new'               => __( 'Add New', 'text_domain' ),
 		'new_item'              => __( 'New Item', 'text_domain' ),
 		'edit_item'             => __( 'Edit Item', 'text_domain' ),
@@ -35,6 +35,7 @@ function ntp_custom_post() {
 		'label'                 => __( 'Team Slider', 'text_domain' ),
 		'description'           => __( 'Team Slider Description', 'text_domain' ),
 		'labels'                => $labels,
+		'menu_icon'           => 'dashicons-groups',
 		'supports'              => array( ),
 		'hierarchical'          => false,
 		'public'                => true,
@@ -50,30 +51,30 @@ function ntp_custom_post() {
 		'capability_type'       => 'page',
 		'supports' => array( 'title' )
 	);
-	register_post_type( 'team_slider', $args );
+	register_post_type( 'fp_team_slider', $args );
 
 }
-add_action( 'init', 'ntp_custom_post', 0 );
+add_action( 'init', 'fp_team_slider_post_type', 0 );
 
 
 
 
-add_action( 'cmb2_admin_init', 'ntp_cmb2_metabox' );
+add_action( 'cmb2_admin_init', 'fp_cmb2_metabox' );
 /**
  * Define the metabox and field configurations.
  */
-function ntp_cmb2_metabox() {
+function fp_cmb2_metabox() {
 
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_ntp_';
+	$prefix = '_fp_';
 
 	/**
 	 * Initiate the metabox
 	 */
 	$cmb = new_cmb2_box( array(
-		'id'            => 'ntp_metabox',
+		'id'            => 'fp_metabox',
 		'title'         => __( 'Team Slider', 'cmb2' ),
-		'object_types'  => array( 'team_slider', ), // Post type
+		'object_types'  => array( 'fp_team_slider', ), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true,
@@ -81,7 +82,7 @@ function ntp_cmb2_metabox() {
 
 	// Add other metaboxes as needed
 	$group_field_id = $cmb->add_field( array(
-	'id'          => 'ntp_team_group',
+	'id'          => 'fp_team_group',
 	'type'        => 'group',
 	'repeatable'  => true, // use false if you want non-repeatable group
 	'options'     => array(
@@ -95,7 +96,7 @@ function ntp_cmb2_metabox() {
 
 // Id's for group's fields only need to be unique for the group. Prefix is not needed.
     $cmb->add_group_field( $group_field_id, array(
-        'name' => 'Member Logo',
+        'name' => 'Member Image',
         'id'   => 'image',
         'type' => 'file',
     ) );

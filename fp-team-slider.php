@@ -26,22 +26,22 @@ if ( is_admin() ){
 
 
 
-function ntp_team_slider($atts,$content = null){
+function fp_team_slider_shortcode($atts,$content = null){
 	ob_start();
     ?>
     <?php
 // The Query
     $ntp_query = new WP_Query( array (
-        'post_type' => 'team_slider',
+        'post_type' => 'fp_team_slider',
         'posts_per_page' => -1
     ) );
 //* The Loop
     if ( $ntp_query->have_posts() ) { ?>
-        <div id="ntp-slider" class="owl-carousel ntp-logo-slider">
+        <div id="fp-team-slider" class="owl-carousel fp-logo-slider">
             <?php while ( $ntp_query->have_posts() ): $ntp_query->the_post(); ?>
                 <!-- CMB2 Repeat Start -->
                 <?php
-                $entries = get_post_meta( get_the_ID(), 'ntp_team_group', true );
+                $entries = get_post_meta( get_the_ID(), 'fp_team_group', true );
 
                 foreach ( (array) $entries as $key => $entry ) {
                     $img = $team_member = $company_url = $member_description = $member_name = '';
@@ -67,16 +67,11 @@ function ntp_team_slider($atts,$content = null){
                     }
                     $caption = isset( $entry['image_caption'] ) ? wpautop( $entry['image_caption'] ) : '';
                     echo <<< EOT
-                <div class="member-item">
+                <div class="fp-member-item">
                     <div class="member_thumb">$img</div>
                     <h4 class="member-title">$member_name</h4>
                     <p class="member-designation">$member_designation</p>
                     <p class="member-description">$member_description</p>
-                    <ul class="member-social-icons">
-                        <li>
-                            <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        </li>
-                    </ul>
                 </div>
 EOT;
                 }
@@ -89,18 +84,18 @@ EOT;
     <?php
     return ob_get_clean();
 }
-add_shortcode('team_slider','ntp_team_slider');
+add_shortcode('fp_team_slider','fp_team_slider_shortcode');
 
 
 // Add plugin js and css files
 function ntp_enqueue_scripts(){
 // Add plugin js and css files
-wp_enqueue_style('main-style', plugins_url('assets/css/ntp-style.css', __FILE__ ), '1.0', false);
+wp_enqueue_style('main-style', plugins_url('assets/css/fp-team-style.css', __FILE__ ), '1.0', false);
 wp_enqueue_style('owl.css', plugins_url('assets/css/owl.carousel.css', __FILE__ ), '1.0', false);
 wp_enqueue_style('owl.transitions.css', plugins_url('assets/css/owl.transitions.css', __FILE__ ), '1.0', false);
 wp_enqueue_style('owl.theme.css', plugins_url('assets/css/owl.theme.css', __FILE__ ),'1.0', false);
 wp_enqueue_script('owl-js', plugins_url('assets/js/owl.carousel.min.js', __FILE__ ), array('jquery'),'1.0', true);
 
-wp_enqueue_script('main-js', plugins_url('assets/js/ntp-plugin.js', __FILE__ ), array('jquery'),'1.0', true);
+wp_enqueue_script('main-js', plugins_url('assets/js/fp-team-plugin.js', __FILE__ ), array('jquery'),'1.0', true);
 }
 add_action('wp_enqueue_scripts','ntp_enqueue_scripts');
