@@ -97,7 +97,7 @@ function fp_cmb2_metabox() {
 // Id's for group's fields only need to be unique for the group. Prefix is not needed.
     $cmb->add_group_field( $group_field_id, array(
         'name' => 'Member Image',
-        'id'   => 'image',
+        'id'   => 'member_image',
         'type' => 'file',
     ) );
     $cmb->add_group_field( $group_field_id, array(

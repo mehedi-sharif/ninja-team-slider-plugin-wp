@@ -2,9 +2,9 @@
 Contributors: furiousplugin
 Donate link: http://furiousplugin.com/
 Tags: best team slider, team showcase slider,team slider, advance team slider WordPress, team carousel, team carousel WordPress, Responsive team slider
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Requires at least: 3.1
+Tested up to: 4.7.4
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -12,11 +12,13 @@ Most advanced team slider on the universe to display team members.
 
 == Description ==
 
-Very first time we build a product to minimize the afford of showing team in a WordPress website.Meet "Ninja Team Slier/Showcase Plugin". With this plugin you can easily show your team members in your website with just a simple short code "[team_slider]" and we will do the rest of it.
+Very first time we build a product to minimize the afford of showing team in a WordPress website.Meet "Ninja Team Slier/Showcase Plugin". With this plugin you can easily show your team members in your website with just a simple short code "[fp_team_slider]" and we will do the rest of it.
+###Shortcode
+`[fp_team_slider]`
 
  This plugin allows you to create responsive team showcase and its really easy to use without hassle.
 
-= Free Key Features =
+= Key Features =
 * **Fully Responsive and Mobile Friendly** - Plugin is fully responsive. With responsiveness, everyone will have access to the nicely designed everywhere and every time.
 * **Order Change** - In the backend the is easy drag and drop option to change th order of your team list.
 * **Shortcode** - With [team_slider] you can show this plugin in your websites post/page.

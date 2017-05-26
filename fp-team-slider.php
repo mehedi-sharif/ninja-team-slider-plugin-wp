@@ -39,43 +39,16 @@ function fp_team_slider_shortcode($atts,$content = null){
     if ( $ntp_query->have_posts() ) { ?>
         <div id="fp-team-slider" class="owl-carousel fp-logo-slider">
             <?php while ( $ntp_query->have_posts() ): $ntp_query->the_post(); ?>
-                <!-- CMB2 Repeat Start -->
-                <?php
-                $entries = get_post_meta( get_the_ID(), 'fp_team_group', true );
+            <?php $entries = get_post_meta( get_the_ID(), 'fp_team_group', true );
+                foreach ($entries as $entry ) : ?>
 
-                foreach ( (array) $entries as $key => $entry ) {
-                    $img = $team_member = $company_url = $member_description = $member_name = '';
-                    if ( isset( $entry['team_member'] ) ) {
-                        $team_member = esc_html( $entry['team_member'] );
-                    }
-                    if ( isset( $entry['member_designation'] ) ) {
-                        $member_designation= esc_html( $entry['member_designation'] );
-                    }
-                    if ( isset( $entry['member_description'] ) ) {
-                        $member_description= esc_html( $entry['member_description'] );
-                    }
-                    if ( isset( $entry['member_name'] ) ) {
-                        $member_name = esc_html( $entry['member_name'] );
-                    }
-                    if ( isset( $entry['company_url'] ) ) {
-                        $company_url = esc_html( $entry['company_url'] );
-                    }
-                    if ( isset( $entry['image_id'] ) ) {
-                        $img = wp_get_attachment_image( $entry['image_id'], 'share-pick', null, array(
-                            'class' => 'thumb',
-                        ) );
-                    }
-                    $caption = isset( $entry['image_caption'] ) ? wpautop( $entry['image_caption'] ) : '';
-                    echo <<< EOT
-                <div class="fp-member-item">
-                    <div class="member_thumb">$img</div>
-                    <h4 class="member-title">$member_name</h4>
-                    <p class="member-designation">$member_designation</p>
-                    <p class="member-description">$member_description</p>
-                </div>
-EOT;
-                }
-                ?>
+                    <div class="fp-member-item">
+                        <div class="member_thumb"><img src="<?php  echo $entry['member_image']; ?>" alt=""></div>
+                        <h4 class="member-title"><?php  echo $entry['member_name']; ?></h4>
+                        <p class="member-designation"><?php  echo $entry['member_designation']; ?></p>
+                        <p class="member-description"><?php  echo $entry['member_description']; ?></p>
+                    </div>
+                    <?php endforeach; ?>
                 <!-- CMB2 Repeat END -->
             <?php endwhile; ?>
         </div>
